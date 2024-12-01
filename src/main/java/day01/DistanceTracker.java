@@ -31,9 +31,8 @@ public class DistanceTracker {
         return distanceList.stream().mapToInt(Integer::intValue).sum();
     }
 
-    // Recursive call
-    private Integer getDistanceFromLocations(LocationList locations1, LocationList locations2) {
-        if (!locations1.locationIds.isEmpty()) {
+    private void getDistanceFromLocations(LocationList locations1, LocationList locations2) {
+        while (!locations1.locationIds.isEmpty() && !locations2.locationIds.isEmpty()) {
             int locationId1 = locations1.getSmallestLocationId();
             int locationId2 = locations2.getSmallestLocationId();
             if (locationId1 > locationId2) {
@@ -43,8 +42,6 @@ public class DistanceTracker {
             }
             locations1.remove(locations1.getSmallestLocationId());
             locations2.remove(locations2.getSmallestLocationId());
-            return getDistanceFromLocations(locations1, locations2);
         }
-        return 0;
     }
 }
