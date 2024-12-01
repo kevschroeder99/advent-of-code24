@@ -28,7 +28,7 @@ Feel free to fork this repository and open pull requests if you’d like to cont
 
 | Day | Challenge   | Language | Status Part 1 | Status Part 2  |  
 |-----|-------------|----------|---------------|----------------|  
-| 1   | 🎅 Puzzle 1 | Java     | ✅ Completed   | 🔄 In Progress |  
+| 1   | 🎅 Puzzle 1 | Java     | ✅ Completed   | ✅ Completed |  
 | 2   | ❄️ Puzzle 2 | Java     | ⏳ Not Started | ⏳ Not Started  |  
 | 3   | 🌟 Puzzle 3 | Java     | ⏳ Not Started | ⏳ Not Started  |  
 | 4   | 🎁 Puzzle 4 | Java     | ⏳ Not Started | ⏳ Not Started  |  
