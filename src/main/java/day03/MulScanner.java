@@ -8,15 +8,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MulScanner {
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day03.txt";
 
     public Integer determineMul() throws Exception {
+        String input = "src/main/resources/inputs/input_day03.txt";
         String regex = "mul\\(\\d{1,3},\\d{1,3}\\)";
         Pattern pattern = Pattern.compile(regex);
 
         List<String> substringList = new ArrayList<>();
         List<Integer> resultList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(PATH_TO_INPUT))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(input))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Matcher matcher = pattern.matcher(line);
@@ -33,5 +33,45 @@ public class MulScanner {
 
             return resultList.stream().mapToInt(Integer::intValue).sum();
         }
+    }
+
+    // Nur die berücksichtigen, die vorher ein "do()" haben.
+    // Wenn vorher ein "dont()" ist, dann nicht berücksichten
+    // 48 (2*4 + 8*5)
+    public Integer determineMulPart2() throws Exception {
+        String input = "src/main/resources/inputs/input_day03_part2_test.txt";
+
+        List<String> substringList = new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
+
+        String regexOk = "do\\(.*?\\)?mul\\(\\d{1,3},\\d{1,3}\\)";
+        String regexStart = "(?<!dont\\().*mul\\(\\d{1,3},\\d{1,3}\\)";
+
+        Pattern patternOk = Pattern.compile(regexOk);
+        Pattern patternStart = Pattern.compile(regexStart);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(input))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+
+                    if(patternStart.matcher(line).find()){
+
+                    }
+                    Matcher matcher = patternOk.matcher(line);
+                    while (matcher.find()) {
+                        String extractedSubstring = matcher.group();
+                        System.out.println(extractedSubstring);
+                        substringList.add(extractedSubstring);
+                    }
+                    for (String substring : substringList) {
+                        MulCalculation mulCalculation = new MulCalculation(substring);
+                        mulCalculation.calculate();
+                        resultList.add(mulCalculation.calculate());
+                }
+            }
+
+        }
+        return resultList.stream().mapToInt(Integer::intValue).sum();
     }
 }

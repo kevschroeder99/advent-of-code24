@@ -21,6 +21,8 @@ public class Main {
         // Day3
         MulScanner mulScanner = new MulScanner();
         System.out.println("Day 3#1 " + mulScanner.determineMul());
+        MulScanner mulScanner2 = new MulScanner();
+        System.out.println("Day 3#2 " + mulScanner2.determineMulPart2());
 
     }
 }
