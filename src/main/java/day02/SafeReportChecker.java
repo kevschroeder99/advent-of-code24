@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SafeReportChecker {
@@ -15,11 +17,12 @@ public class SafeReportChecker {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] splitted = line.split(" ");
-                Integer[] reportList = Arrays.stream(splitted)
-                        .map(Integer::valueOf).toArray(Integer[]::new);
+                List<Integer> intList = Arrays.stream(splitted)    // stream of String
+                        .map(Integer::valueOf) // stream of Integer
+                        .collect(Collectors.toList());
 
-                Report report = new Report(reportList);
-                if (report.isReportSafe()) {
+                Report report = new Report();
+                if (report.isReportSafe(intList)) {
                     counter++;
                 }
             }

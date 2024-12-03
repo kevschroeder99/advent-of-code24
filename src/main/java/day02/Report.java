@@ -1,59 +1,67 @@
 package day02;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Report {
+    // Part 2: 561
+    int tolerationCounter = 0;
 
-    public Integer[] levels;
+    public boolean isReportSafe(List<Integer> intList) {
+        boolean result = false;
+        if (tolerationCounter > 1) {
+            return false;
+        }
 
-    public Report(Integer[] levels) {
-        this.levels = levels;
-    }
-
-    public boolean isReportSafe() {
-        if ((isIncreasing() || isDecreasing()) && isDifferSmaller4()) {
+        if ((isIncreasing(intList) || isDecreasing(intList)) && isDifferSmaller4(intList)) {
             return true;
         }
-        return false;
+
+        //TODO: Implement Part 2
+//        for (int i = 0; i < intList.size(); i++) {
+//            List<Integer> tempList = new ArrayList<>(intList);
+//            int removedElement = tempList.remove(i);
+//
+//            if ((isIncreasing(tempList) || isDecreasing(tempList)) && isDifferSmaller4(tempList)) {
+//                tolerationCounter++;
+//                System.out.println("Removing problematic element: " + removedElement);
+//                intList.clear();
+//                intList.addAll(tempList); // Update the original list with the modified safe version
+//                result = true;
+//            }
+//        }
+
+        return result;
     }
 
-    private boolean isDecreasing() {
-        boolean isDecreasing = false;
-        for (int i = 0; i < levels.length - 1; i++) {
-            if (levels[i] > levels[i + 1]) {
-                isDecreasing = true;
-            } else {
+    public boolean isDecreasing(List<Integer> intList) {
+        for (int i = 0; i < intList.size() - 1; i++) {
+            if (intList.get(i) <= intList.get(i + 1)) {
                 return false;
             }
         }
-        return isDecreasing;
+        return true;
     }
 
-    private boolean isIncreasing() {
-        boolean isIncreasing = false;
-        for (int i = 0; i < levels.length - 1; i++) {
-            if (levels[i] < levels[i + 1]) {
-                isIncreasing = true;
-            } else {
+    public boolean isIncreasing(List<Integer> intList) {
+        for (int i = 0; i < intList.size() - 1; i++) {
+            if (intList.get(i) >= intList.get(i + 1)) {
                 return false;
             }
         }
-        return isIncreasing;
+        return true;
     }
 
-    private boolean isDifferSmaller4() {
-        //Unterschied zwischen Element i und i+1 Muss größer 0 sein und kleiner als 4.
+    public boolean isDifferSmaller4(List<Integer> intList) {
         //Difference: 0 < i & i+1 < 4
-        boolean isDifferSmaller = false;
-        for (int i = 0; i < levels.length - 1; i++) {
-            int num1 = levels[i];
-            int num2 = levels[i + 1];
-            if (Math.abs(num1 - num2) > 0 && Math.abs(num1 - num2) < 4) {
-                isDifferSmaller = true;
-            } else {
+        for (int i = 0; i < intList.size() - 1; i++) {
+            int diff = Math.abs(intList.get(i) - intList.get(i + 1));
+            if (diff == 0 || diff >= 4) {
                 return false;
             }
         }
-        return isDifferSmaller;
+        return true;
     }
-
 
 }
