@@ -1,14 +1,12 @@
 package day02;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Report {
-    // Part 2: 561
     int tolerationCounter = 0;
 
-    public boolean isReportSafe(List<Integer> intList) {
+    public boolean isReportSafe(List<Integer> intList, boolean isPartTwo) {
         boolean result = false;
         if (tolerationCounter > 1) {
             return false;
@@ -18,19 +16,20 @@ public class Report {
             return true;
         }
 
-        //TODO: Implement Part 2
-//        for (int i = 0; i < intList.size(); i++) {
-//            List<Integer> tempList = new ArrayList<>(intList);
-//            int removedElement = tempList.remove(i);
-//
-//            if ((isIncreasing(tempList) || isDecreasing(tempList)) && isDifferSmaller4(tempList)) {
-//                tolerationCounter++;
-//                System.out.println("Removing problematic element: " + removedElement);
-//                intList.clear();
-//                intList.addAll(tempList); // Update the original list with the modified safe version
-//                result = true;
-//            }
-//        }
+        if (isPartTwo) {
+            // For Statement -> Part2
+            for (int i = 0; i < intList.size(); i++) {
+                List<Integer> tempList = new ArrayList<>(intList);
+                tempList.remove(i);
+
+                if ((isIncreasing(tempList) || isDecreasing(tempList)) && isDifferSmaller4(tempList)) {
+                    tolerationCounter++;
+                    intList.clear();
+                    intList.addAll(tempList);
+                    result = true;
+                }
+            }
+        }
 
         return result;
     }
