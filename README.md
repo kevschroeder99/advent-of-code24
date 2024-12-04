@@ -31,7 +31,7 @@ Feel free to fork this repository and open pull requests if you’d like to cont
 | 1   | 🎅 Puzzle 1 | Java     | ✅ Completed   | ✅ Completed    |  
 | 2   | ❄️ Puzzle 2 | Java     | ✅ Completed | ✅ Completed    |  
 | 3   | 🌟 Puzzle 3 | Java     | ✅ Completed | 🔁 In Progress |  
-| 4   | 🎁 Puzzle 4 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 4   | 🎁 Puzzle 4 | Java     | ✅ Completed | ✅ Completed |  
 | 5   | 🎄 Puzzle 5 | Java     | ⏳ Not Started | ⏳ Not Started  |  
 | 6   | ❄️ Puzzle 6 | Java     | ⏳ Not Started | ⏳ Not Started  |  
 | 7   | 🌟 Puzzle 7 | Java     | ⏳ Not Started | ⏳ Not Started  |  
