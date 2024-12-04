@@ -1,6 +1,7 @@
 import day01.DistanceTracker;
 import day01.SimilarityScore;
 import day02.SafeReportChecker;
+import day03.MulScanner;
 
 public class Main {
 
@@ -14,8 +15,14 @@ public class Main {
 
         // Day 2
         SafeReportChecker safeReportChecker = new SafeReportChecker();
-        //567 ist too high
-        System.out.println("Day 2#1: " + safeReportChecker.dertmineSafeReports());
+        System.out.println("Day 2#1: " + safeReportChecker.dertmineSafeReports(false));
+        System.out.println("Day 2#2: " + safeReportChecker.dertmineSafeReports(true));
+
+        // Day3
+        MulScanner mulScanner = new MulScanner();
+        System.out.println("Day 3#1 " + mulScanner.determineMul());
+        MulScanner mulScanner2 = new MulScanner();
+        System.out.println("Day 3#2 " + mulScanner2.determineMulPart2());
 
     }
 }
