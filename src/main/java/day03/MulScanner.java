@@ -44,8 +44,8 @@ public class MulScanner {
         List<String> substringList = new ArrayList<>();
         List<Integer> resultList = new ArrayList<>();
 
-        String regexOk = "do\\(.*?\\)?mul\\(\\d{1,3},\\d{1,3}\\)";
-        String regexStart = "(?<!dont\\().*mul\\(\\d{1,3},\\d{1,3}\\)";
+        String regexOk = "(?<!don't\\().*mul\\(\\d{1,3},\\d{1,3}\\)|do\\(.*?\\)?mul\\(\\d{1,3},\\d{1,3}\\)";
+        String regexStart = "";
 
         Pattern patternOk = Pattern.compile(regexOk);
         Pattern patternStart = Pattern.compile(regexStart);
@@ -54,10 +54,6 @@ public class MulScanner {
             String line;
             while ((line = br.readLine()) != null) {
                     System.out.println(line);
-
-                    if(patternStart.matcher(line).find()){
-
-                    }
                     Matcher matcher = patternOk.matcher(line);
                     while (matcher.find()) {
                         String extractedSubstring = matcher.group();

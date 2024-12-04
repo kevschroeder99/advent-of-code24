@@ -26,32 +26,32 @@ Feel free to fork this repository and open pull requests if you’d like to cont
 
 ## 🧩 Progress
 
-| Day | Challenge   | Language | Status Part 1 | Status Part 2   |  
-|-----|-------------|----------|---------------|-----------------|  
-| 1   | 🎅 Puzzle 1 | Java     | ✅ Completed   | ✅ Completed     |  
-| 2   | ❄️ Puzzle 2 | Java     | ✅ Completed | ✅ Completed     |  
-| 3   | 🌟 Puzzle 3 | Java     | ✅ Completed | 🔁In Progress |  
-| 4   | 🎁 Puzzle 4 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 5   | 🎄 Puzzle 5 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 6   | ❄️ Puzzle 6 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 7   | 🌟 Puzzle 7 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 8   | 🎁 Puzzle 8 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 9   | 🎅 Puzzle 9 | Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 10  | 🎄 Puzzle 10| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 11  | ❄️ Puzzle 11| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 12  | 🌟 Puzzle 12| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 13  | 🎁 Puzzle 13| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 14  | 🎅 Puzzle 14| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 15  | 🎄 Puzzle 15| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 16  | ❄️ Puzzle 16| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 17  | 🌟 Puzzle 17| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 18  | 🎁 Puzzle 18| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 19  | 🎅 Puzzle 19| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 20  | 🎄 Puzzle 20| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 21  | ❄️ Puzzle 21| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 22  | 🌟 Puzzle 22| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 23  | 🎁 Puzzle 23| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 24  | 🎅 Puzzle 24| Java     | ⏳ Not Started | ⏳ Not Started   |  
-| 25  | 🎄 Puzzle 25| Java     | ⏳ Not Started | ⏳ Not Started   |  
+| Day | Challenge   | Language | Status Part 1 | Status Part 2  |  
+|-----|-------------|----------|---------------|----------------|  
+| 1   | 🎅 Puzzle 1 | Java     | ✅ Completed   | ✅ Completed    |  
+| 2   | ❄️ Puzzle 2 | Java     | ✅ Completed | ✅ Completed    |  
+| 3   | 🌟 Puzzle 3 | Java     | ✅ Completed | 🔁 In Progress |  
+| 4   | 🎁 Puzzle 4 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 5   | 🎄 Puzzle 5 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 6   | ❄️ Puzzle 6 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 7   | 🌟 Puzzle 7 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 8   | 🎁 Puzzle 8 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 9   | 🎅 Puzzle 9 | Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 10  | 🎄 Puzzle 10| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 11  | ❄️ Puzzle 11| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 12  | 🌟 Puzzle 12| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 13  | 🎁 Puzzle 13| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 14  | 🎅 Puzzle 14| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 15  | 🎄 Puzzle 15| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 16  | ❄️ Puzzle 16| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 17  | 🌟 Puzzle 17| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 18  | 🎁 Puzzle 18| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 19  | 🎅 Puzzle 19| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 20  | 🎄 Puzzle 20| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 21  | ❄️ Puzzle 21| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 22  | 🌟 Puzzle 22| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 23  | 🎁 Puzzle 23| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 24  | 🎅 Puzzle 24| Java     | ⏳ Not Started | ⏳ Not Started  |  
+| 25  | 🎄 Puzzle 25| Java     | ⏳ Not Started | ⏳ Not Started  |  
 
 
