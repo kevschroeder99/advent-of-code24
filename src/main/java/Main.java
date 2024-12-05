@@ -23,7 +23,7 @@ public class Main {
         MulScanner mulScanner = new MulScanner();
         System.out.println("Day 3#1: " + mulScanner.determineMul());
         MulScanner mulScanner2 = new MulScanner();
-        System.out.println("Day 3#2: " + mulScanner2.determineMulPart2());
+        System.out.println("Day 3#2 (Answer between 37917450 - 347579770): " + mulScanner2.determineMulPart2());
 
         // Day4
         WordSearcher wordSearcher = new WordSearcher();
