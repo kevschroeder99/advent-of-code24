@@ -3,6 +3,8 @@ import day01.SimilarityScore;
 import day02.SafeReportChecker;
 import day03.MulScanner;
 import day04.WordSearcher;
+import day05.UpdateChecker;
+import day06.GuardPathTracker;
 
 public class Main {
 
@@ -20,6 +22,7 @@ public class Main {
         System.out.println("Day 2#2: " + safeReportChecker.dertmineSafeReports(true));
 
         // Day3
+        //TODO: Part 2
         MulScanner mulScanner = new MulScanner();
         System.out.println("Day 3#1: " + mulScanner.determineMul());
         MulScanner mulScanner2 = new MulScanner();
@@ -30,6 +33,16 @@ public class Main {
         System.out.println("Day 4#1: " + wordSearcher.searchWordsPart1());
         WordSearcher wordSearcher2 = new WordSearcher();
         System.out.println("Day 4#2: " + wordSearcher2.searchWordsPart2());
+
+        // Day5
+        //TODO:
+        UpdateChecker updateChecker = new UpdateChecker();
+        updateChecker.checkUpdates();
+
+        // Day6
+        GuardPathTracker guardPathTracker = new GuardPathTracker();
+        System.out.println("Day 6#1: " + guardPathTracker.trackGuardPaths());
+
 
     }
 }
