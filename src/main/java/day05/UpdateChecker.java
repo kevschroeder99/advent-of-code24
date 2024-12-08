@@ -38,9 +38,6 @@ public class UpdateChecker {
                 //update.isUpdateCorrect();
             }
 
-
-
-
         }
         return 0;
     }

@@ -5,6 +5,7 @@ import day03.MulScanner;
 import day04.WordSearcher;
 import day05.UpdateChecker;
 import day06.GuardPathTracker;
+import day07.CalibrationResultChecker;
 
 public class Main {
 
@@ -40,8 +41,13 @@ public class Main {
         updateChecker.checkUpdates();
 
         // Day6
+        //TODO: Part 2
         GuardPathTracker guardPathTracker = new GuardPathTracker();
         System.out.println("Day 6#1: " + guardPathTracker.trackGuardPaths());
+
+        // Day7
+        CalibrationResultChecker calibrationResultChecker = new CalibrationResultChecker();
+        calibrationResultChecker.checkCalibrationResults();
 
 
     }
