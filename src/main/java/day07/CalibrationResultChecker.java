@@ -9,22 +9,19 @@ import java.util.List;
 
 public class CalibrationResultChecker {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07_test.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07.txt";
 
     private final static List<String> operands = Arrays.asList("+", "*");
 
     public long checkCalibrationResults() throws IOException {
         List<Long> resultList = new ArrayList<>();
-        List<List<Long>> inputList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(PATH_TO_INPUT))) {
             String line;
             while ((line = br.readLine()) != null) {
                 List<Long> valueList = new ArrayList<>();
-                System.out.println(line);
                 String[] equations = line.split(":");
                 //[0] -> Result
-                System.out.println(equations[0]);
 
                 String[] values = equations[1].trim().split(" ");
 
@@ -35,11 +32,10 @@ public class CalibrationResultChecker {
                 List<String> expressions = generateExpressions(valueList, operands);
                 List<Long> longExpressions = createLongExpressions(expressions);
 
-                System.out.println(expressions);
-                //Prüfen ob equations[0] in der Liste enthalten ist
-//                if (longExpressions.contains(Long.parseLong(equations[0]))) {
-//                    resultList.add(Long.parseLong(equations[0]));
-//                }
+                //Prüfen ob in der Liste enthalten ist
+                if (longExpressions.contains(Long.parseLong(equations[0]))) {
+                    resultList.add(Long.parseLong(equations[0]));
+                }
 
             }
         }
@@ -49,11 +45,30 @@ public class CalibrationResultChecker {
     private List<Long> createLongExpressions(List<String> expressions) {
         List<Long> results = new ArrayList<>();
 
-        for(String expression : expressions) {
-            //Split String by nonDigits
-            //Put non Digit into tempList
-        }
+        for (String expression : expressions) {
+            StringBuilder sb = new StringBuilder();
+            long result = 0;
+            char operation = '+';
 
+            for(char c : (expression + "+").toCharArray()) {
+                if(Character.isDigit(c)) {
+                    sb.append(c);
+                } else {
+                    long number = Long.parseLong(sb.toString());
+                    switch(operation) {
+                        case '+':
+                            result += number;
+                            break;
+                        case '*':
+                            result *= number;
+                            break;
+                    }
+                    operation = c;
+                    sb = new StringBuilder();
+                }
+            }
+            results.add(result);
+        }
         return results;
     }
 

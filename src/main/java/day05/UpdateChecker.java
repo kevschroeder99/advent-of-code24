@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UpdateChecker {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05_test.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05.txt";
 
     public Integer checkUpdates() throws IOException {
         List<String> orderingRules = new ArrayList<>();
