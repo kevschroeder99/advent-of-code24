@@ -36,9 +36,9 @@ public class Main {
         System.out.println("Day 4#2: " + wordSearcher2.searchWordsPart2());
 
         // Day5
-        //TODO:
+        //TODO: Part 1 doesnt work for Test Input
         UpdateChecker updateChecker = new UpdateChecker();
-        updateChecker.checkUpdates();
+        System.out.println("Day 5#1 : " + updateChecker.checkUpdates());
 
         // Day6
         //TODO: Part 2
@@ -47,7 +47,7 @@ public class Main {
 
         // Day7
         CalibrationResultChecker calibrationResultChecker = new CalibrationResultChecker();
-        calibrationResultChecker.checkCalibrationResults();
+        //calibrationResultChecker.checkCalibrationResults();
 
 
     }

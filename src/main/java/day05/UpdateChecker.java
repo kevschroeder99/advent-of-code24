@@ -13,6 +13,7 @@ public class UpdateChecker {
     public Integer checkUpdates() throws IOException {
         List<String> orderingRules = new ArrayList<>();
         List<String> updates = new ArrayList<>();
+        List<Integer> results = new ArrayList<>();
         boolean isSecondList = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(PATH_TO_INPUT))) {
@@ -30,16 +31,16 @@ public class UpdateChecker {
                 }
             }
 
-            System.out.println(orderingRules);
-            System.out.println(updates);
+            //System.out.println(orderingRules);
+            //System.out.println(updates);
 
-            for(int i = 0; i < updates.size(); i++) {
+            for (int i = 0; i < updates.size(); i++) {
                 Update update = new Update(orderingRules, updates.get(i));
-                //update.isUpdateCorrect();
+                results.add(update.isUpdateCorrect());
             }
 
         }
-        return 0;
+        return results.stream().mapToInt(Integer::intValue).sum();
     }
 
 }
