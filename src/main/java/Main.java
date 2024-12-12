@@ -37,7 +37,7 @@ public class Main {
         // Day5
         //TODO: Part 1 doesnt work for Test Input
         UpdateChecker updateChecker = new UpdateChecker();
-        //System.out.println("Day 5#1 TODO : " + updateChecker.checkUpdates());
+        System.out.println("Day 5#1 TODO : " + updateChecker.checkUpdates());
 
         // Day6
         //TODO: Part 2
@@ -46,7 +46,7 @@ public class Main {
 
         // Day7
         CalibrationResultChecker calibrationResultChecker = new CalibrationResultChecker();
-        System.out.println(calibrationResultChecker.checkCalibrationResults());
+        System.out.println("Day 7#1: " + calibrationResultChecker.checkCalibrationResults());
 
 
     }
