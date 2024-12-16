@@ -49,7 +49,10 @@ public class Main {
 
         // Day7
         CalibrationResultChecker calibrationResultChecker = new CalibrationResultChecker();
-        System.out.println("Day 7#1: " + calibrationResultChecker.checkCalibrationResults());
+        System.out.println("Day 7#1: " + calibrationResultChecker.checkCalibrationResults(true));
+        //Auskommentiert, Performance -> Nachbessern!
+        //System.out.println("Day 7#2: " + calibrationResultChecker.checkCalibrationResults(false));
+
 
 
     }

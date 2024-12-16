@@ -9,15 +9,15 @@ import java.util.List;
 
 public class CalibrationResultChecker {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07_test.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07.txt";
 
-    //private final static List<String> operands = Arrays.asList("+", "*");
-    private final static List<String> operands = Arrays.asList("+", "*", "|");
+    private final static List<String> operandsPartOne = Arrays.asList("+", "*");
+    private final static List<String> operandsPartTwo = Arrays.asList("+", "*", "|");
 
 
-    public long checkCalibrationResults() throws IOException {
+    public long checkCalibrationResults(boolean isPartOne) throws IOException {
         List<Long> resultList = new ArrayList<>();
-
+        List<String> expressions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(PATH_TO_INPUT))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -31,11 +31,15 @@ public class CalibrationResultChecker {
                     valueList.add(Long.parseLong(value));
                 }
 
-                List<String> expressions = generateExpressions(valueList, operands);
-                List<Long> longExpressions = createLongExpressions(expressions);
+                if (isPartOne) {
+                    expressions = generateExpressions(valueList, operandsPartOne);
+                } else {
+                    expressions = generateExpressions(valueList, operandsPartTwo);
+                }
+                List<Long> longResults = createLongResults(expressions);
 
                 //Prüfen ob in der Liste enthalten ist
-                if (longExpressions.contains(Long.parseLong(equations[0]))) {
+                if (longResults.contains(Long.parseLong(equations[0]))) {
                     resultList.add(Long.parseLong(equations[0]));
                 }
 
@@ -44,40 +48,51 @@ public class CalibrationResultChecker {
         return resultList.stream().mapToLong(Long::longValue).sum();
     }
 
-    private List<Long> createLongExpressions(List<String> expressions) {
+    private List<Long> createLongResults(List<String> expressions) {
         List<Long> results = new ArrayList<>();
 
         for (String expression : expressions) {
             StringBuilder sb = new StringBuilder();
-            long result = 0;
-            char operation = '+';
+            long value = 0;
+            char lastOperator = '+';
+            boolean isConcatMode = false;
 
-            for(char c : (expression + "+").toCharArray()) {
-                if(Character.isDigit(c)) {
+            for (int i = 0; i < expression.length(); i++) {
+                Character c = expression.charAt(i);
+                if (Character.isDigit(c)) {
                     sb.append(c);
-                } else if(c == '|'){
-                    while (Character.isDigit(c)) {
-                        sb.append(c);
-                        //c = expression.charAt(++i);
-                    }
-                    continue;
-                }
-                else {
+                } else {
                     long number = Long.parseLong(sb.toString());
-                    switch(operation) {
-                        case '+':
-                            result += number;
-                            break;
-                        case '*':
-                            result *= number;
-                            break;
-
-                    }
-                    operation = c;
                     sb = new StringBuilder();
+                    if (isConcatMode) {
+                        value = Long.parseLong(value + String.valueOf(number));
+                    } else {
+                        if (lastOperator == '+') {
+                            value += number;
+                        } else if (lastOperator == '*') {
+                            value *= number;
+                        }
+                    }
+
+                    if (c == '|') {
+                        isConcatMode = true;
+                    } else {
+                        isConcatMode = false;
+                        lastOperator = c;
+                    }
                 }
             }
-            results.add(result);
+            if (sb.length() > 0) {
+                long number = Long.parseLong(sb.toString());
+                if (isConcatMode) {
+                    value = Long.parseLong(value + String.valueOf(number));
+                } else if (lastOperator == '+') {
+                    value += number;
+                } else if (lastOperator == '*') {
+                    value *= number;
+                }
+            }
+            results.add(value);
         }
         return results;
     }
