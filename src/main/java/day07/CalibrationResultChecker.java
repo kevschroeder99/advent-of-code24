@@ -9,9 +9,11 @@ import java.util.List;
 
 public class CalibrationResultChecker {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day07_test.txt";
 
-    private final static List<String> operands = Arrays.asList("+", "*");
+    //private final static List<String> operands = Arrays.asList("+", "*");
+    private final static List<String> operands = Arrays.asList("+", "*", "|");
+
 
     public long checkCalibrationResults() throws IOException {
         List<Long> resultList = new ArrayList<>();
@@ -53,7 +55,14 @@ public class CalibrationResultChecker {
             for(char c : (expression + "+").toCharArray()) {
                 if(Character.isDigit(c)) {
                     sb.append(c);
-                } else {
+                } else if(c == '|'){
+                    while (Character.isDigit(c)) {
+                        sb.append(c);
+                        //c = expression.charAt(++i);
+                    }
+                    continue;
+                }
+                else {
                     long number = Long.parseLong(sb.toString());
                     switch(operation) {
                         case '+':
@@ -62,6 +71,7 @@ public class CalibrationResultChecker {
                         case '*':
                             result *= number;
                             break;
+
                     }
                     operation = c;
                     sb = new StringBuilder();
