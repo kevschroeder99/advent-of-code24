@@ -4,11 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UpdateChecker {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05_test.txt";
 
     public Integer checkUpdates() throws IOException {
         List<String> orderingRules = new ArrayList<>();
@@ -31,12 +32,17 @@ public class UpdateChecker {
                 }
             }
 
-            //System.out.println(orderingRules);
-            //System.out.println(updates);
 
             for (int i = 0; i < updates.size(); i++) {
-                Update update = new Update(orderingRules, updates.get(i));
-                results.add(update.isUpdateCorrect());
+                // long starttime = System.currentTimeMillis();
+                Update update = new Update(updates.get(i));
+                //update.setOrderingRules(orderingRules);
+                System.out.println("Update: " + updates.get(i));
+                System.out.println("Ordering Rules: " + orderingRules);
+
+                results.add(update.isUpdateCorrect(orderingRules));
+                //long endtime = System.currentTimeMillis();
+                // System.out.println("Execution time: " + (endtime - starttime) + "ms");
             }
 
         }

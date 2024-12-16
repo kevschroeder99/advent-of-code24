@@ -3,6 +3,7 @@ import day01.SimilarityScore;
 import day02.SafeReportChecker;
 import day03.MulScanner;
 import day04.WordSearcher;
+import day05.PrintQueue;
 import day05.UpdateChecker;
 import day06.GuardPathTracker;
 import day07.CalibrationResultChecker;
@@ -36,8 +37,10 @@ public class Main {
 
         // Day5
         //TODO: Part 1 doesnt work for Test Input
-        UpdateChecker updateChecker = new UpdateChecker();
+        //UpdateChecker updateChecker = new UpdateChecker();
         //System.out.println("Day 5#1 TODO : " + updateChecker.checkUpdates());
+        PrintQueue printQueue = new PrintQueue();
+        printQueue.getAmountOfCorrectUpdates();
 
         // Day6
         //TODO: Part 2
@@ -46,7 +49,10 @@ public class Main {
 
         // Day7
         CalibrationResultChecker calibrationResultChecker = new CalibrationResultChecker();
-        System.out.println(calibrationResultChecker.checkCalibrationResults());
+        System.out.println("Day 7#1: " + calibrationResultChecker.checkCalibrationResults(true));
+        //Auskommentiert, Performance -> Nachbessern!
+        //System.out.println("Day 7#2: " + calibrationResultChecker.checkCalibrationResults(false));
+
 
 
     }
