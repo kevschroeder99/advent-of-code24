@@ -19,7 +19,6 @@ public class PrintQueue {
         for (String s : invalidList) {
             String[] splitted = s.split(",");
             Integer[] ints = new Integer[splitted.length];
-            //Convert String into ints
             for (int i = 0; i < splitted.length; i++) {
                 int value = Integer.parseInt(splitted[i]);
                 ints[i] = value;
@@ -30,8 +29,6 @@ public class PrintQueue {
             while (j < ints.length - 1) {
                 //TODO: TestCase 3 funktioniert noch nicht. Nochmal schauen, ob die Order mit der vorherigen Zahl passt. Sonst nochmal tauschn.
                 if (graph.get(ints[j]) == null || !graph.get(ints[j]).contains(ints[j + 1])) {
-                    System.out.println("Ich bin falsch sortiert: " + ints[j] + " - " + ints[j + 1]);
-                    //Sortieralgorithmus
                     int tempValue = ints[j];
                     ints[j] = ints[j + 1];
                     ints[j + 1] = tempValue;
@@ -41,22 +38,15 @@ public class PrintQueue {
                 }
             }
 
-            if(j == ints.length - 1){
+            if (j == ints.length - 1) {
                 temp.add(ints[j]);
             }
-            System.out.println("Temp List: " + temp);
-
-
-            //if isNextIntegerValue in reachable Nodes -> Add currentValue to newUpdateList
             sortedUpdateList.add(temp);
         }
 
         for (List<Integer> list : sortedUpdateList) {
             result.add(list.get(list.size() / 2));
         }
-
-        System.out.println("Invalid List: " + invalidList);
-        System.out.println("Graph: " + graph);
 
         return result.stream().mapToInt(Integer::intValue).sum();
     }
