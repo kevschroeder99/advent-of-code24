@@ -39,6 +39,7 @@ public class Main {
         //TODO: Part 2
         PrintQueue printQueue = new PrintQueue();
         System.out.println("Day 5#1: " + printQueue.getAmountOfCorrectUpdates());
+        System.out.println("Day 5#2: " + printQueue.sortInvalidList());
 
         // Day6
         //TODO: Part 2

@@ -7,7 +7,60 @@ import java.util.*;
 
 public class PrintQueue {
 
-    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05.txt";
+    public static final String PATH_TO_INPUT = "src/main/resources/inputs/input_day05_test.txt";
+    List<String> invalidList = new ArrayList<>();
+    Map<Integer, Set<Integer>> graph = new HashMap<>();
+
+
+    public Integer sortInvalidList() {
+        List<Integer> result = new ArrayList<>();
+        List<List<Integer>> sortedUpdateList = new ArrayList<>();
+
+        for (String s : invalidList) {
+            String[] splitted = s.split(",");
+            Integer[] ints = new Integer[splitted.length];
+            //Convert String into ints
+            for (int i = 0; i < splitted.length; i++) {
+                int value = Integer.parseInt(splitted[i]);
+                ints[i] = value;
+            }
+            //For Each Integer get graph key and reachable nods and check:
+            List<Integer> temp = new ArrayList<>();
+            int j = 0;
+            while (j < ints.length - 1) {
+                //TODO: TestCase 3 funktioniert noch nicht. Nochmal schauen, ob die Order mit der vorherigen Zahl passt. Sonst nochmal tauschn.
+                if (graph.get(ints[j]) == null || !graph.get(ints[j]).contains(ints[j + 1])) {
+                    System.out.println("Ich bin falsch sortiert: " + ints[j] + " - " + ints[j + 1]);
+                    //Sortieralgorithmus
+                    int tempValue = ints[j];
+                    ints[j] = ints[j + 1];
+                    ints[j + 1] = tempValue;
+                } else {
+                    temp.add(ints[j]);
+                    j++;
+                }
+            }
+
+            if(j == ints.length - 1){
+                temp.add(ints[j]);
+            }
+            System.out.println("Temp List: " + temp);
+
+
+            //if isNextIntegerValue in reachable Nodes -> Add currentValue to newUpdateList
+            sortedUpdateList.add(temp);
+        }
+
+        for (List<Integer> list : sortedUpdateList) {
+            result.add(list.get(list.size() / 2));
+        }
+
+        System.out.println("Invalid List: " + invalidList);
+        System.out.println("Graph: " + graph);
+
+        return result.stream().mapToInt(Integer::intValue).sum();
+    }
+
 
     public Integer getAmountOfCorrectUpdates() throws IOException {
         List<String> rules = new ArrayList<>();
@@ -64,14 +117,15 @@ public class PrintQueue {
             }
             if (isUpdateValid) {
                 result.add(update);
+            } else {
+                invalidList.add(update);
             }
-
         }
         return result;
     }
 
     private Map<Integer, Set<Integer>> getRules(List<String> rules) {
-        Map<Integer, Set<Integer>> graph = new HashMap<>();
+
         for (String rule : rules) {
             String[] values = rule.split("\\|");
             int left = Integer.parseInt(values[0]);
