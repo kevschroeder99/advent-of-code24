@@ -36,11 +36,9 @@ public class Main {
         System.out.println("Day 4#2: " + wordSearcher2.searchWordsPart2());
 
         // Day5
-        //TODO: Part 1 doesnt work for Test Input
-        //UpdateChecker updateChecker = new UpdateChecker();
-        //System.out.println("Day 5#1 TODO : " + updateChecker.checkUpdates());
+        //TODO: Part 2
         PrintQueue printQueue = new PrintQueue();
-        printQueue.getAmountOfCorrectUpdates();
+        System.out.println("Day 5#1: " + printQueue.getAmountOfCorrectUpdates());
 
         // Day6
         //TODO: Part 2

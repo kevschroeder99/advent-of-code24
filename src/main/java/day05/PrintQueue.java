@@ -3,10 +3,7 @@ package day05;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PrintQueue {
 
@@ -21,6 +18,9 @@ public class PrintQueue {
             String line;
             while ((line = br.readLine()) != null) {
                 //Add Rule
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
                 if (line.contains("|")) {
                     rules.add(line);
                 }
@@ -31,32 +31,27 @@ public class PrintQueue {
             }
 
             // erstelle graph mit rules
-            Map<Integer, List<Integer>> graph = getRules(rules);
+            Map<Integer, Set<Integer>> graph = getRules(rules);
 
 
             //Ergebnisliste
             List<String> result = updateResultList(updates, graph);
-            System.out.println(updateResultList(updates, graph));
 
             for (String s : result) {
                 String[] split = s.split(",");
                 intlist.add(Integer.parseInt(split[split.length / 2]));
             }
-            System.out.println(intlist.size());
-            System.out.println(intlist.stream().mapToInt(i -> i).sum());
         }
 
-        //5091
         return intlist.stream().mapToInt(i -> i).sum();
     }
 
-    private List<String> updateResultList(List<String> updates, Map<Integer, List<Integer>> graph) {
+    private List<String> updateResultList(List<String> updates, Map<Integer, Set<Integer>> graph) {
         List<String> result = new ArrayList<>();
-        List<Integer> dependencies;
-        boolean isUpdateValid = true;
-
-        for (int i = 0; i < updates.size(); i++) {
-            String[] valueSplitted = updates.get(i).split(",");
+        Set<Integer> dependencies;
+        for (String update : updates) {
+            boolean isUpdateValid = true;
+            String[] valueSplitted = update.split(",");
             for (int k = 0; k < valueSplitted.length - 1; k++) {
                 Integer updateValue = Integer.parseInt(valueSplitted[k]);
                 Integer nextValue = Integer.parseInt(valueSplitted[k + 1]);
@@ -68,33 +63,20 @@ public class PrintQueue {
                 }
             }
             if (isUpdateValid) {
-                result.add(updates.get(i));
+                result.add(update);
             }
-        }
 
+        }
         return result;
     }
 
-    private Map<Integer, List<Integer>> getRules(List<String> rules) {
-        Map<Integer, List<Integer>> graph = new HashMap<>();
+    private Map<Integer, Set<Integer>> getRules(List<String> rules) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
         for (String rule : rules) {
             String[] values = rule.split("\\|");
             int left = Integer.parseInt(values[0]);
             int right = Integer.parseInt(values[1]);
-
-            graph.compute(left, (l, r) -> {
-                if (r == null) {
-                    r = new ArrayList<>();
-                }
-                r.add(right);
-
-                for (Integer dependent : graph.getOrDefault(right, new ArrayList<>())) {
-                    if (!r.contains(dependent)) {
-                        r.add(dependent);
-                    }
-                }
-                return r;
-            });
+            graph.computeIfAbsent(left, k -> new HashSet<>()).add(right);
         }
         return graph;
     }
