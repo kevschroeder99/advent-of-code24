@@ -14,7 +14,6 @@ public class PrintQueue {
 
     public Integer sortInvalidList() {
         List<Integer> result = new ArrayList<>();
-        List<List<Integer>> sortedUpdateList = new ArrayList<>();
 
         for (String s : invalidList) {
             String[] splitted = s.split(",");
@@ -24,30 +23,32 @@ public class PrintQueue {
                 ints[i] = value;
             }
             //For Each Integer get graph key and reachable nods and check:
-            List<Integer> temp = new ArrayList<>();
             int j = 0;
             while (j < ints.length - 1) {
-                //TODO: TestCase 3 funktioniert noch nicht. Nochmal schauen, ob die Order mit der vorherigen Zahl passt. Sonst nochmal tauschn.
-                if (graph.get(ints[j]) == null || !graph.get(ints[j]).contains(ints[j + 1])) {
-                    int tempValue = ints[j];
-                    ints[j] = ints[j + 1];
-                    ints[j + 1] = tempValue;
+                int tempValue;
+                if (j >= 1 && (graph.get(ints[j - 1]) == null || !graph.get(ints[j - 1]).contains(ints[j]))) {
+                    tempValue = ints[j - 1];
+                    ints[j - 1] = ints[j];
+                    ints[j] = tempValue;
                 } else {
-                    temp.add(ints[j]);
-                    j++;
+                    if (graph.get(ints[j]) == null || !graph.get(ints[j]).contains(ints[j + 1])) {
+                        tempValue = ints[j];
+                        ints[j] = ints[j + 1];
+                        ints[j + 1] = tempValue;
+                    } else {
+
+                        j++;
+                    }
                 }
             }
+            System.out.println("Ordered Lists : " + Arrays.stream(ints).toList());
 
-            if (j == ints.length - 1) {
-                temp.add(ints[j]);
-            }
-            sortedUpdateList.add(temp);
+            result.add(ints[ints.length / 2]);
         }
 
-        for (List<Integer> list : sortedUpdateList) {
-            result.add(list.get(list.size() / 2));
-        }
-
+        System.out.println(invalidList.size());
+        //System.out.println("Result: " + result.size());
+        //5912 is too low
         return result.stream().mapToInt(Integer::intValue).sum();
     }
 
